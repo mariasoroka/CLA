@@ -7,9 +7,9 @@ cond(A)
 x_gt = rand(n, 1);
 b = A * x_gt;
 %% Solve system using Gauss_LS_pd
-[x_G_LS_dense, log_resid_G_LS_dense, log_x_G_LS_dense, log_time_G_LS_dense, log_flops_G_LS_dense, ~] = Gauss_pd(A, b, e, 15, true);
+[x_G_LS_dense, log_resid_G_LS_dense, log_x_G_LS_dense, log_time_G_LS_dense, log_flops_G_LS_dense, ~] = Gauss_pd(A, b, e, 300, true);
 %% Solve system using CD_LS_pd
-[x_CD_LS_dense, log_resid_CD_LS_dense, log_x_CD_LS_dense, log_time_CD_LS_dense, log_flops_CD_LS_dense, ~] = CD_LS_pd(A, b, e, 15, true);
+[x_CD_LS_dense, log_resid_CD_LS_dense, log_x_CD_LS_dense, log_time_CD_LS_dense, log_flops_CD_LS_dense, ~] = CD_LS_pd(A, b, e, 300, true);
 
 
 
@@ -23,9 +23,9 @@ A = sprandsym(n, density, rc, 1);
 x_gt = rand(n, 1);
 b = A * x_gt;
 %% Solve system using Gauss_LS
-[x_G_LS_sparse, log_resid_G_LS_sparse, log_x_G_LS_sparse, log_time_G_LS_sparse, log_flops_G_LS_sparse, ~] = Gauss_LS(A, b, e, 15, true);
+[x_G_LS_sparse, log_resid_G_LS_sparse, log_x_G_LS_sparse, log_time_G_LS_sparse, log_flops_G_LS_sparse, ~] = Gauss_LS(A, b, e, 300, true);
 %% Solve system using CD_LS
-[x_CD_LS_sparse, log_resid_CD_LS_sparse, log_x_CD_LS_sparse, log_time_CD_LS_sparse, log_flops_CD_LS_sparse, ~] = CD_LS(A, b, e, 15, true);
+[x_CD_LS_sparse, log_resid_CD_LS_sparse, log_x_CD_LS_sparse, log_time_CD_LS_sparse, log_flops_CD_LS_sparse, ~] = CD_LS(A, b, e, 300, true);
 
 
 
