@@ -1,17 +1,17 @@
 m = 500;
 n = 50; 
-e = 10^(-4);
+e = 10^(-2);
 
 %% Dense case
 A = randn(m, n);
 %% Computing ground truth
-x_gt = rand(n, 1);
+x_gt = randn(n, 1);
 b = A * x_gt;
 k = cond(A)
 %% Compute theoretical convergence rate
 rho = 1 - eigs(A.' * A, 1, "smallestabs") / norm(A, "fro")^2;
 %% Solve system using Gauss_LS
-[x_G_LS_dense, log_resid_G_LS_dense, log_x_G_LS_dense, log_time_G_LS_dense, log_flops_G_LS_dense, n_iters_G_LS_dense] = Gauss_LS(A, b, e, 300, true);
+[x_G_LS_dense, log_resid_G_LS_dense, log_x_G_LS_dense, log_time_G_LS_dense, log_flops_G_LS_dense, n_iters_G_LS_dense] = Gauss_LS(A, b, e, 15, true);
 %% Compute quantiles
 n_runs = 100;
 max_n_iters = 2000;

@@ -1,12 +1,12 @@
-function [x, log_resid, log_x, log_time, log_flops, n_iter] = CD_LS(A, b, e, max_time, verbose)
+function [x, log_resid, log_x, log_time, log_flops, n_iter] = CD_LS_pd(A, b, e, max_time, verbose,mysol)
     [m, n] = size(A);
 
     [log_resid, log_x, log_time, log_flops] = deal([]);
 
-    x = rand(n, 1);
+    x = randn(n, 1);
     n_iter = 0;
     time = 0;
-    residue = norm(A * x - b) / norm(b);
+    residue = (dot(x-mysol,A*(x-mysol))/dot(mysol,A*mysol))^0.5;
     I = eye(n); 
  
     prob_array = diag(A) / trace(A);
@@ -21,9 +21,10 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = CD_LS(A, b, e, max
     while residue > e && time < max_time
         n_iter = n_iter + 1;
         n_col = random(dpdf);
-        x = x - (A(n_col, :) * x - b(n_col)) / A(n_col, n_col) .* I(:, n_col);
+        %disp(A(n_col,:))
+        x = x - (dot(A(n_col, :),x)-b(n_col)) / A(n_col, n_col).*I(:, n_col);
 
-        residue = norm(A * x - b) / norm(b);
+        residue = (dot(x-mysol,A*(x-mysol))/dot(mysol,A*mysol))^0.5;
 
         if verbose == true
             if issparse(A) == true

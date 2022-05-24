@@ -5,10 +5,10 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = GK(A, b, e, max_ti
 
     [log_resid, log_x, log_time, log_flops] = deal([]);
 
-    x = rand(n, 1);
+    x = randn(n, 1);
     n_iter = 0;
     time = 0;
-    residue = norm(A * x - b) / norm(b);
+    residue = norm(A*x-b)/norm(b);
 
     id = eye(m);
     mu = zeros(m,1);
@@ -20,9 +20,9 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = GK(A, b, e, max_ti
         n_iter = n_iter + 1;
         eta = mvnrnd(mu, id);
         eta = eta';
-        x = x - eta' * (A*x - b) / (norm(A'*eta)^2) .* A' * eta;
+        x = x - eta'*(A*x-b)/(norm(A'*eta)^2).*A'*eta;
 
-        residue = norm(A * x - b) / norm(b);
+        residue = norm(A*x-b)/norm(b);
 
         if verbose == true
             if issparse(A) == true

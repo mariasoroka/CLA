@@ -3,10 +3,10 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = CD_LS(A, b, e, max
 
     [log_resid, log_x, log_time, log_flops] = deal([]);
 
-    x = rand(n, 1);
+    x = randn(n, 1);
     n_iter = 0;
     time = 0;
-    residue = norm(A * x - b) / norm(b);
+    residue = norm(A*x - b) / norm(b);
     I = eye(n); 
 
     frob_norm = norm(A,"fro"); 
@@ -22,9 +22,9 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = CD_LS(A, b, e, max
     while residue > e && time < max_time
         n_iter = n_iter + 1;
         n_col = random(dpdf);
-        x = x - dot(A(:,n_col), (A*x - b) / (norm(A(:,n_col))^2)) .* I(:, n_col);
+        x = x - dot(A(:,n_col),(A*x - b)/(norm(A(:,n_col))^2)).* I(:, n_col);
 
-        residue = norm(A * x - b) / norm(b);
+        residue = norm(A*x-b)/norm(b);
 
         if verbose == true
             if issparse(A) == true

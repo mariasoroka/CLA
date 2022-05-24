@@ -5,10 +5,10 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = Gauss_LS(A, b, e, 
 
     [log_resid, log_x, log_time, log_flops] = deal([]);
 
-    x = rand(n, 1);
+    x = randn(n, 1);
     n_iter = 0;
     time = 0;
-    residue = norm(A * x - b) / norm(b);
+    residue = norm(A*x-b)/norm(b);
 
     id = eye(n);
     mu = zeros(n,1);
@@ -20,7 +20,7 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = Gauss_LS(A, b, e, 
         n_iter = n_iter + 1;
         eta = mvnrnd(mu, id);
         eta = eta';
-        x = x - (A*eta)' * (A*x - b)/(norm(A*eta)^2) * eta;
+        x = x - ((A*eta)' * (A*x-b)/(norm(A*eta)^2)).* eta;
         residue = norm(A * x - b) / norm(b);
 
         if verbose == true
