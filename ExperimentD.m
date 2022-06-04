@@ -1,7 +1,7 @@
 m = 1000;
 n = 500; 
 e = 10^(-4);
-t = 5;
+t = 60;
 
 %% Dense case
 A = randn(m, n);
@@ -49,7 +49,7 @@ hold on
 semilogy(log_time_RK_dense, 100*(1/log_resid_RK_dense(1))*log_resid_RK_dense);
 xlabel("time")
 ylabel("error")
-legend("Gauss LS","CD LS", "Gauss Kaczmarz", "Random Kaczmarz")
+legend("Gauss LS","CD LS", "GK", "RK")
 hold off
 %% Plot flops - dense
 subplot(2, 2, 2)
@@ -62,7 +62,7 @@ hold on
 semilogy(log_flops_RK_dense, 100*(1/log_resid_RK_dense(1))*log_resid_RK_dense);
 xlabel("flops")
 ylabel("error")
-legend("Gauss LS", "CD LS", "Gauss Kaczmarz", "Random Kaczmarz")
+legend("Gauss LS", "CD LS", "GK", "RK")
 hold off
 %% Plot time - sparse
 subplot(2, 2, 3)
@@ -75,7 +75,7 @@ hold on
 semilogy(log_time_RK_sparse, 100*(1/log_resid_RK_sparse(1))*log_resid_RK_sparse);
 xlabel("time")
 ylabel("error")
-legend("Gauss LS", "CD LS", "Gauss Kaczmarz", "Random Kaczmarz")
+legend("Gauss LS", "CD LS", "GK", "RK")
 hold off
 %% Plot flops - sparse
 subplot(2, 2, 4)
@@ -88,5 +88,5 @@ hold on
 semilogy(log_flops_RK_sparse, 100*(1/log_resid_RK_sparse(1))*log_resid_RK_sparse);
 xlabel("flops")
 ylabel("error")
-legend("Gauss LS", "CD LS", "Gauss Kaczmarz", "Random Kaczmarz")
+legend("Gauss LS", "CD LS", "GK", "RK")
 hold off

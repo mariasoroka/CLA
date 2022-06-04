@@ -1,8 +1,9 @@
 e = 10^(-4);
-t = 100;
+t = 60;
 %% Dense case
 n = 100;
 A = hilb(n);
+A = full(A);
 cond(A)
 %% Computing ground truth
 x_gt = rand(n, 1);
@@ -37,7 +38,7 @@ hold on
 semilogy(log_time_CD_LS_dense,(100/log_resid_CD_LS_dense(1))*log_resid_CD_LS_dense);
 xlabel("time")
 ylabel("error")
-legend("Gauss LS pd", "CD LS pd")
+legend("Gauss pd", "CD pd")
 hold off
 %% Plot flops - dense
 subplot(2, 2, 2)
@@ -46,7 +47,7 @@ hold on
 semilogy(log_flops_CD_LS_dense, (100/log_resid_CD_LS_dense(1))*log_resid_CD_LS_dense);
 xlabel("flops")
 ylabel("error")
-legend("Gauss LS pd", "CD LS pd")
+legend("Gauss pd", "CD pd")
 hold off
 %% Plot time - sparse
 subplot(2, 2, 3)
@@ -55,7 +56,7 @@ hold on
 semilogy(log_time_CD_LS_sparse, (100/log_resid_CD_LS_sparse(1))*log_resid_CD_LS_sparse);
 xlabel("time")
 ylabel("error")
-legend("Gauss LS pd", "CD LS pd")
+legend("Gauss pd", "CD pd")
 hold off
 %% Plot flops - sparse
 subplot(2, 2, 4)
@@ -64,5 +65,5 @@ hold on
 semilogy(log_flops_CD_LS_sparse, (100/log_resid_CD_LS_sparse(1))*log_resid_CD_LS_sparse);
 xlabel("flops")
 ylabel("error")
-legend("Gauss LS pd", "CD LS pd")
+legend("Gauss pd", "CD pd")
 hold off

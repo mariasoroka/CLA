@@ -6,6 +6,8 @@ function [x, log_resid, log_x, n_iter] = KaczmarzRandom(A, b, e, max_n_iter, ver
     else
         prob_array = ones(1, m)./m;
     end
+    prob_array = full(prob_array);
+
     dpdf = makedist('Multinomial', 'Probabilities', prob_array);
     x = randn(n, 1);
     n_iter = 0;
