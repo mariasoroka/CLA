@@ -21,7 +21,7 @@ numerical experiments.
 
 ### Reproducing results
 To run the code and to reproduce our results it is necessary to install [Lightspeed Toolbox](https://github.com/tminka/lightspeed) for Matlab 
-to get access to $\texttt{flops}$ function that is missing in current versions of Matlab.
+to get access to $\texttt{flops}$ function that is missing in current version of Matlab.
 
 
 
