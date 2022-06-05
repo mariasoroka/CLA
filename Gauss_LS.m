@@ -5,7 +5,7 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = Gauss_LS(A, b, e, 
 
     [log_resid, log_x, log_time, log_flops] = deal([]);
 
-    x = randn(n, 1);
+    x = zeros(n, 1);
     n_iter = 0;
     time = 0;
     residue = norm(A*x-b)/norm(b);

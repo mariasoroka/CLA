@@ -1,6 +1,6 @@
 function [x, log_resid, log_x, n_iter] = Kaczmarz(A, b, e, max_n_iter, verbose)
     [m, n] = size(A);
-    x = randn(n, 1);
+    x = zeros(n, 1);
     n_iter = 0;
     row_n = 1;
     residue = norm(A * x - b);

@@ -3,7 +3,7 @@ function [x, log_resid, log_x, log_time, log_flops, n_iter] = CD_LS_pd(A, b, e, 
 
     [log_resid, log_x, log_time, log_flops] = deal([]);
 
-    x = randn(n, 1);
+    x = zeros(n, 1);
     n_iter = 0;
     time = 0;
     residue = (dot(x-mysol,A*(x-mysol))/dot(mysol,A*mysol))^0.5;

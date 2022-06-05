@@ -2,11 +2,11 @@
 m = 1000;
 n = 500;
 A = randn(m, n);
-% for i=1:m
-%     if(mod(i, 10) == 0)
-%         A(i, :) = A(i, :) * 100;
-%     end
-% end
+for i=1:m
+    if(mod(i, 10) == 0)
+        A(i, :) = A(i, :) * 100;
+    end
+end
 x_gt = randn(n, 1);
 b = A * x_gt;
 %% Solve system using Kaczmarz

@@ -9,7 +9,7 @@ function [x, log_resid, log_x, n_iter] = KaczmarzRandom(A, b, e, max_n_iter, ver
     prob_array = full(prob_array);
 
     dpdf = makedist('Multinomial', 'Probabilities', prob_array);
-    x = randn(n, 1);
+    x = zeros(n, 1);
     n_iter = 0;
     residue = norm(A*x-b);
     log_resid = zeros(1, max_n_iter);
